@@ -5,16 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CloseAnApp"
         mc:Ignorable="d"
-        Title="Close an App" Height="250" Width="350" ResizeMode="NoResize" Background="#FF7B7B7B">
-    <Grid Margin="10,21,23,166" Cursor="Arrow">
-        <TextBox x:Name="textFieldBreak" RenderTransformOrigin="0.500,0.500" Margin="6,-9,159,18" FontSize="20"/>
-        <TextBox x:Name="textFieldLastTime" RenderTransformOrigin="0.500,0.500" Margin="165,-9,0,18" FontSize="20"/>
-        <Button x:Name="ButtonOK" Margin="0,148,0,-148" Content="OK" Click="ButtonOK_Click"></Button>
-        <Button x:Name="ButtonBreakUp" Margin="6,33,235,-34"></Button>
-        <Button x:Name="ButtonBreakDown" Margin="82,33,159,-34"/>
-        <Button x:Name="ButtonLastTimeUp" Margin="165,33,76,-34"/>
-        <Button x:Name="ButtonLastTimeDown" Margin="241,33,0,-34"/>
-        <ProgressBar x:Name="ProgressBar" Margin="3,86,-3,-57" Value="25" SmallChange="0" Foreground="#FF7B3FD6" Background="#FFB9ABAB"></ProgressBar>
-        <Label x:Name="LabelTime" Margin="6,109,0,-96" Content="Text Example"></Label>
+        Title="Close an App" Height="183" Width="271" ResizeMode="NoResize" Background="#FF7B7B7B">
+    <Grid Cursor="Arrow" Margin="0,0,1,0">
+        <TextBox x:Name="textBoxBreakTime" Text="{Binding BreakTime}" Margin="7,7,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxPassedTime" Text="{Binding PassedTime}" Margin="7,36,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True"/>
+        <Button x:Name="buttonUpBreakTime" Content="5" HorizontalAlignment="Left" Margin="87,7,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonUpBreakTime_Click"/>
+        <Button x:Name="buttonDownBreakTime" Content="6" HorizontalAlignment="Left" Margin="87,19,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonDownBreakTime_Click"/>
+        <Button x:Name="buttonUpPassedTime" Content="5" HorizontalAlignment="Left" Margin="87,36,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonUpPassedTime_Click"/>
+        <Button x:Name="buttonDownPassedTime" Content="6" HorizontalAlignment="Left" Margin="87,49,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonDownPassedTime_Click"/>
+        <TextBox x:Name="textCurrentTime" HorizontalAlignment="Left" Margin="140,8,0,0" TextWrapping="Wrap" Text="{Binding CurrentTime}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textTargetTime" HorizontalAlignment="Left" Margin="140,29,0,0" TextWrapping="Wrap" Text="{Binding TargetTime}" VerticalAlignment="Top" Width="120"/>
+        <ProgressBar x:Name="progressBarTimer" HorizontalAlignment="Center" Height="16" Margin="0,74,0,0" VerticalAlignment="Top" Width="250"/>
+        <Button x:Name="buttonRun" Content="Run" HorizontalAlignment="Left" Margin="117,125,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonUpDoubleBreakTime" Content="5" HorizontalAlignment="Left" Margin="112,7,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonUpDoubleBreakTime_Click"/>
+        <Button x:Name="buttonDownDoubleBreakTime" Content="6" HorizontalAlignment="Left" Margin="112,19,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonDownDoubleBreakTime_Click"/>
+        <Button x:Name="buttonUpDoublePassedTime" Content="5" HorizontalAlignment="Left" Margin="112,36,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonUpDoublePassedTime_Click"/>
+        <Button x:Name="buttonDownDoublePassedTime" Content="6" HorizontalAlignment="Left" Margin="112,49,0,0" VerticalAlignment="Top" Width="23" Height="12" FontFamily="Webdings" Click="buttonDownDoublePassedTime_Click"/>
+
     </Grid>
 </Window>
