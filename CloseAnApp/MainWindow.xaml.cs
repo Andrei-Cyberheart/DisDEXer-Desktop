@@ -97,7 +97,7 @@ namespace CloseAnApp
 
         private void buttonUpPassedTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(1));
+            TimeSpan value = TimeSpan.Parse(this.textBoxPassedTime.Text).Add(TimeSpan.FromMinutes(1));
             if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
@@ -106,7 +106,7 @@ namespace CloseAnApp
 
         private void buttonUpDoublePassedTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(10));
+            TimeSpan value = TimeSpan.Parse(this.textBoxPassedTime.Text).Add(TimeSpan.FromSeconds(10));
             if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
@@ -115,7 +115,7 @@ namespace CloseAnApp
 
         private void buttonDownPassedTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-1));
+            TimeSpan value = TimeSpan.Parse(this.textBoxPassedTime.Text).Add(TimeSpan.FromMinutes(-1));
             if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
@@ -124,7 +124,7 @@ namespace CloseAnApp
 
         private void buttonDownDoublePassedTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(-10));
+            TimeSpan value = TimeSpan.Parse(this.textBoxPassedTime.Text).Add(TimeSpan.FromSeconds(-10));
             if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
@@ -187,7 +187,7 @@ namespace CloseAnApp
                 this.buttonRun.Content = "Stop";
                 this.isRun = true;
             }
-            else if (!isRun)
+            else
             {
                 this.buttonRun.Content = "Run";
                 this.isRun = false;
