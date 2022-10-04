@@ -181,5 +181,21 @@ namespace CloseAnApp
                 }
             }
         }
+
+        private void buttonRun_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isRun)
+            {
+                this.buttonRun.Content = "Stop";
+                this.isRun = true;
+            }
+            else if (!isRun)
+            {
+                this.buttonRun.Content = "Run";
+                this.isRun = false;
+            }
+           
+            
+        }
     }
 }
