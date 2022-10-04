@@ -50,6 +50,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
         
@@ -59,6 +60,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -68,6 +70,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -77,6 +80,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -86,6 +90,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -95,6 +100,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -104,6 +110,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
@@ -113,6 +120,7 @@ namespace CloseAnApp
             if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
+                this.targetTime = currentTime + lastTime;
             }
         }
 
