@@ -161,7 +161,7 @@ namespace CloseAnApp
             
             this.textCurrentTime.Text = $"Время: {currentTime.ToLongTimeString()}";
             this.textTargetTime.Text = $"Закрытие: {targetTime.ToLongTimeString()}";
-            this.textTimer.Text = $"Таймер: {lastTime}";
+            this.textTimer.Text = $"Таймер: {lastTime.Hours:00}:{lastTime.Minutes:00}:{lastTime.Seconds:00}";
             
 
             //Завершение программы
