@@ -26,43 +26,43 @@ namespace CloseAnApp
         private DispatcherTimer timer; //Часы
         private DateTime currentTime; //Текущее время
         private DateTime targetTime; //Тригерное время
-        private DateTime lastTime; //Оставшее время
+        private TimeSpan breakTime; //Время перерыва в минутах
+        private TimeSpan passedTime; //Прошедшее время в минутах
+        private TimeSpan lastTime; //Оставшее время
         private bool isRun = false; //Режим запуска
-        private double breakTime; //Время перерыва в минутах
-        private double passedTime; //Прошедшее время в минутах
-        private double difference = 0.0; //Оставшее время
-
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public double BreakTime
+        //Время перерыва
+        public TimeSpan BreakTime
         {
             get { return breakTime; }
             set 
             { 
                 breakTime = value;
                 this.textBoxBreakTime.Text = breakTime.ToString();
-                difference = breakTime - passedTime;
+                lastTime = breakTime - passedTime;
             }
         }
-
-        public double PassedTime
+        //Время прошедшее
+        public TimeSpan PassedTime
         {
             get { return passedTime; }
             set 
             { 
                 passedTime = value;
                 this.textBoxPassedTime.Text = passedTime.ToString();
-                difference = breakTime - passedTime;
+                lastTime = breakTime - passedTime;
             }
         }
 
         private void buttonUpBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxBreakTime.Text) + 1;
-            if (value >= 0)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(1));
+            if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
             }
@@ -70,8 +70,8 @@ namespace CloseAnApp
         
         private void buttonUpDoubleBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxBreakTime.Text) + 0.1;
-            if (value >= 0)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(10));
+            if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
             }
@@ -79,9 +79,8 @@ namespace CloseAnApp
 
         private void buttonDownBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxBreakTime.Text) - 1;
-            double passedTime = Convert.ToDouble(this.textBoxPassedTime.Text);
-            if (value >= 0 && passedTime < value)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-1));
+            if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
             }
@@ -89,9 +88,8 @@ namespace CloseAnApp
 
         private void buttonDownDoubleBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxBreakTime.Text) - 0.1;
-            double passedTime = Convert.ToDouble(this.textBoxPassedTime.Text);
-            if (value >= 0 && passedTime < value)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(-10));
+            if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
             }
@@ -99,9 +97,8 @@ namespace CloseAnApp
 
         private void buttonUpPassedTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxPassedTime.Text) + 1;
-            double breakTime = Convert.ToDouble(this.textBoxBreakTime.Text);
-            if (value >= 0 && breakTime > value)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(1));
+            if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
             }
@@ -109,9 +106,8 @@ namespace CloseAnApp
 
         private void buttonUpDoublePassedTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxPassedTime.Text) + 0.1;
-            double breakTime = Convert.ToDouble(this.textBoxBreakTime.Text);
-            if (value >= 0 && breakTime > value)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(10));
+            if (value >= TimeSpan.Zero && breakTime > value)
             {
                 PassedTime = value;
             }
@@ -119,8 +115,8 @@ namespace CloseAnApp
 
         private void buttonDownPassedTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxPassedTime.Text) - 1;
-            if (value >= 0)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-1));
+            if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
             }
@@ -128,8 +124,8 @@ namespace CloseAnApp
 
         private void buttonDownDoublePassedTime_Click(object sender, RoutedEventArgs e)
         {
-            double value = Convert.ToDouble(this.textBoxPassedTime.Text) - 0.1;
-            if (value >= 0)
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(-10));
+            if (value >= TimeSpan.Zero)
             {
                 PassedTime = value;
             }
@@ -162,19 +158,21 @@ namespace CloseAnApp
         private void Timer_Tick(object sender, EventArgs e)
         {
             currentTime = DateTime.Now;
-            lastTime = DateTime.MinValue.AddMinutes(difference);
+            
             this.textCurrentTime.Text = $"Время: {currentTime.ToLongTimeString()}";
             this.textTargetTime.Text = $"Закрытие: {targetTime.ToLongTimeString()}";
-            this.textTimer.Text = $"Таймер: {lastTime.ToLongTimeString()}";
+            //this.textTimer.Text = $"Таймер: {lastTime.ToLongTimeString()}";
+            
 
             //Завершение программы
             if (!isRun)
             {
-                this.targetTime = currentTime.AddMinutes(difference).AddSeconds(1);
+                this.targetTime = currentTime + lastTime;
             } 
             else
             {
-                if (currentTime >= targetTime)
+                lastTime = targetTime.Subtract(currentTime);
+                if (lastTime <= TimeSpan.Zero)
                 {
                     timer.Stop();
                     CloseApp(appName);

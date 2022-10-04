@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Close an App" Height="183" Width="271" ResizeMode="NoResize" Background="#FF7B7B7B" Loaded="Window_Loaded">
     <Grid Cursor="Arrow" Margin="0,0,1,0">
-        <TextBox x:Name="textBoxBreakTime" Text="0" Margin="7,7,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right"/>
-        <TextBox x:Name="textBoxPassedTime" Text="0" Margin="7,44,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right"/>
+        <TextBox x:Name="textBoxBreakTime" Text="00:00:00" Margin="7,7,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right" FontSize="20"/>
+        <TextBox x:Name="textBoxPassedTime" Text="00:00:00" Margin="7,44,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right" FontSize="20"/>
         <Button x:Name="buttonUpBreakTime" Content="5" HorizontalAlignment="Left" Margin="87,7,0,0" VerticalAlignment="Top" Width="23" Height="15" FontFamily="Webdings" Click="buttonUpBreakTime_Click"/>
         <Button x:Name="buttonDownBreakTime" Content="6" HorizontalAlignment="Left" Margin="87,23,0,0" VerticalAlignment="Top" Width="23" Height="16" FontFamily="Webdings" Click="buttonDownBreakTime_Click"/>
         <Button x:Name="buttonUpPassedTime" Content="5" HorizontalAlignment="Left" Margin="87,44,0,0" VerticalAlignment="Top" Width="23" Height="15" FontFamily="Webdings" Click="buttonUpPassedTime_Click"/>
