@@ -145,7 +145,6 @@ namespace CloseAnApp
 
         void CloseApp(string appName)
         {
-            bool isClosed = false;
             Process[] GetPArray = Process.GetProcesses();
             foreach (Process testProcess in GetPArray)
             {
@@ -156,7 +155,6 @@ namespace CloseAnApp
                 if (ProcessName.CompareTo(appName) == 0)
                 {
                     testProcess.CloseMainWindow();
-                    isClosed = true;
                 }
             }
         }
