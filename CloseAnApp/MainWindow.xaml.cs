@@ -161,7 +161,7 @@ namespace CloseAnApp
             
             this.textCurrentTime.Text = $"Время: {currentTime.ToLongTimeString()}";
             this.textTargetTime.Text = $"Закрытие: {targetTime.ToLongTimeString()}";
-            //this.textTimer.Text = $"Таймер: {lastTime.ToLongTimeString()}";
+            this.textTimer.Text = $"Таймер: {lastTime}";
             
 
             //Завершение программы
@@ -172,6 +172,7 @@ namespace CloseAnApp
             else
             {
                 lastTime = targetTime.Subtract(currentTime);
+                this.progressBarTimer.Value =  lastTime.TotalSeconds / breakTime.TotalSeconds * 100;
                 if (lastTime <= TimeSpan.Zero)
                 {
                     timer.Stop();
@@ -192,8 +193,6 @@ namespace CloseAnApp
                 this.buttonRun.Content = "Run";
                 this.isRun = false;
             }
-           
-            
         }
     }
 }
