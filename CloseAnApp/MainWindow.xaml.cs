@@ -46,7 +46,7 @@ namespace CloseAnApp
 
         private void buttonUpBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(1));
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(5));
             if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
@@ -56,7 +56,7 @@ namespace CloseAnApp
         
         private void buttonUpDoubleBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(10));
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(1));
             if (value >= TimeSpan.Zero)
             {
                 BreakTime = value;
@@ -66,7 +66,7 @@ namespace CloseAnApp
 
         private void buttonDownBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-1));
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-5));
             if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
@@ -76,7 +76,7 @@ namespace CloseAnApp
 
         private void buttonDownDoubleBreakTime_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromSeconds(-10));
+            TimeSpan value = TimeSpan.Parse(this.textBoxBreakTime.Text).Add(TimeSpan.FromMinutes(-1));
             if (value >= TimeSpan.Zero && passedTime < value)
             {
                 BreakTime = value;
