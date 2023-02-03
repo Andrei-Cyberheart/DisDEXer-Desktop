@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:CloseAnApp"
         mc:Ignorable="d"
         Title="Close an App" Height="183" Width="271" ResizeMode="NoResize" Background="#FF7B7B7B" Loaded="Window_Loaded">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskBarItem"/>
+    </Window.TaskbarItemInfo>
     <Grid Cursor="Arrow" Margin="0,0,1,0">
         <TextBox x:Name="textBoxBreakTime" Text="00:00:00" Margin="7,7,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right" FontSize="20"/>
         <TextBox x:Name="textBoxPassedTime" Text="00:00:00" Margin="7,44,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsReadOnly="True" TextAlignment="Right" FontSize="20"/>

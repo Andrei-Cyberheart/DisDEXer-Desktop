@@ -181,11 +181,13 @@ namespace CloseAnApp
             {
                 this.buttonRun.Content = "Stop";
                 this.isRun = true;
+                taskBarItem.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }
             else
             {
                 this.buttonRun.Content = "Run";
                 this.isRun = false;
+                taskBarItem.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
             }
         }
     }
