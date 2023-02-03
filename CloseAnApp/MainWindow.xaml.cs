@@ -179,13 +179,13 @@ namespace CloseAnApp
         {
             if (!isRun)
             {
-                this.buttonRun.Content = "Stop";
+                this.buttonRun.Content = "Стоп";
                 this.isRun = true;
                 taskBarItem.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }
             else
             {
-                this.buttonRun.Content = "Run";
+                this.buttonRun.Content = "Пуск";
                 this.isRun = false;
                 taskBarItem.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
             }
